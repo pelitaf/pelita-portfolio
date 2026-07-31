@@ -29,7 +29,10 @@ export default function Hero() {
       <div className="hero-content">
         <p className="hero-eyebrow">Hello, I’m</p>
 
-        <h1 className="hero-title">Pelita Felicitas</h1>
+        <h1 className="hero-title">
+          <span>Pelita</span>
+          <span>Felicitas</span>
+        </h1>
 
         <div className="title-carousel" aria-live="polite">
           <div
@@ -45,11 +48,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-
-        {/* <p className="hero-description">
-          I create thoughtful digital experiences and work with data to turn
-          ideas into useful solutions.
-        </p> */}
 
         <div className="hero-actions">
           <a className="primary-button" href="#projects">
