@@ -14,17 +14,14 @@ export default function NeonBackground() {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
 
-      const offsetX = (event.clientX - centerX) / centerX;
-      const offsetY = (event.clientY - centerY) / centerY;
+      const x = (event.clientX - centerX) / centerX;
+      const y = (event.clientY - centerY) / centerY;
 
       element.style.setProperty("--mouse-x", `${event.clientX}px`);
       element.style.setProperty("--mouse-y", `${event.clientY}px`);
 
-      element.style.setProperty("--move-x", `${offsetX * 18}px`);
-      element.style.setProperty("--move-y", `${offsetY * 18}px`);
-
-      element.style.setProperty("--move-x-reverse", `${offsetX * -12}px`);
-      element.style.setProperty("--move-y-reverse", `${offsetY * -12}px`);
+      element.style.setProperty("--parallax-x", `${x * 20}px`);
+      element.style.setProperty("--parallax-y", `${y * 20}px`);
     }
 
     window.addEventListener("pointermove", handlePointerMove);
@@ -40,42 +37,48 @@ export default function NeonBackground() {
       className="neon-background"
       aria-hidden="true"
     >
-      <div className="neon-blob neon-blob-one" />
-      <div className="neon-blob neon-blob-two" />
-      <div className="neon-blob neon-blob-three" />
+      {/* Nebula */}
+      <div className="nebula nebula-one" />
+      <div className="nebula nebula-two" />
+      <div className="nebula nebula-three" />
+      <div className="nebula nebula-four" />
+      <div className="nebula nebula-five" />
+      <div className="nebula nebula-six" />
 
-      <div className="shape-wrapper shape-wrapper-one">
-        <div className="cute-shape heart heart-one">♡</div>
+      {/* Aurora */}
+      <div className="aurora aurora-one" />
+      <div className="aurora aurora-two" />
+
+      {/* Moon */}
+      <div className="background-moon" />
+
+      {/* Stars */}
+      <div className="stars">
+        {Array.from({ length: 55 }).map((_, index) => (
+          <span
+            key={index}
+            className="star"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 8}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
+              transform: `scale(${0.6 + Math.random() * 1.2})`,
+            }}
+          />
+        ))}
       </div>
 
-      <div className="shape-wrapper shape-wrapper-two">
-        <div className="cute-shape heart heart-two">♡</div>
-      </div>
+      {/* Hearts */}
+      <div className="floating-heart heart-1">♡</div>
+      <div className="floating-heart heart-2">♡</div>
+      <div className="floating-heart heart-3">♡</div>
 
-      <div className="shape-wrapper shape-wrapper-three">
-        <div className="cute-shape star star-one">☆</div>
-      </div>
+      {/* Shooting stars */}
+      <div className="shooting-star shooting-star-1" />
+      <div className="shooting-star shooting-star-2" />
 
-      <div className="shape-wrapper shape-wrapper-four">
-        <div className="cute-shape star star-two">✦</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-five">
-        <div className="cute-shape star star-three">✧</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-six">
-        <div className="cute-shape circle circle-one" />
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-seven">
-        <div className="cute-shape circle circle-two" />
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-eight">
-        <div className="cute-shape circle circle-three" />
-      </div>
-
+      {/* Mouse glow */}
       <div className="mouse-glow" />
     </div>
   );

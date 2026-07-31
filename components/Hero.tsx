@@ -13,28 +13,29 @@ export default function Hero() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveIndex((currentIndex) => {
-        return (currentIndex + 1) % titles.length;
-      });
-    }, 2600);
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % titles.length);
+    }, 2800);
 
-    return () => {
-      window.clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section id="home" className="hero-section">
       <div className="hero-content">
-        <p className="hero-eyebrow">Hello, I’m</p>
+
+        <p className="hero-intro">
+          hello,
+        </p>
 
         <h1 className="hero-title">
-          <span>Pelita</span>
-          <span>Felicitas</span>
+          <span className="hero-first">PELITA</span>
+          <span className="hero-last">FELICITAS</span>
         </h1>
 
-        <div className="title-carousel" aria-live="polite">
+        <div className="hero-divider" />
+
+        <div className="title-carousel">
           <div
             className="title-carousel-track"
             style={{
@@ -42,22 +43,43 @@ export default function Hero() {
             }}
           >
             {titles.map((title) => (
-              <div className="title-carousel-item" key={title}>
+              <div
+                key={title}
+                className="title-carousel-item"
+              >
                 {title}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="hero-actions">
-          <a className="primary-button" href="#projects">
+        <p className="hero-description">
+          I build thoughtful digital experiences through
+          <span> data</span>,
+          <span> development</span>,
+          and
+          <span> design.</span>
+        </p>
+
+        <div className="hero-buttons">
+
+          <a
+            href="#projects"
+            className="primary-button"
+          >
             View Projects
+            <span className="button-arrow">→</span>
           </a>
 
-          <a className="secondary-button" href="#contact">
-            Contact Me
+          <a
+            href="#contact"
+            className="secondary-button"
+          >
+            Let's Connect
           </a>
+
         </div>
+
       </div>
     </section>
   );

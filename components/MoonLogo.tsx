@@ -9,59 +9,56 @@ export default function MoonLogo({
     <svg
       className={`moon-logo ${className}`}
       viewBox="0 0 64 64"
-      role="img"
-      aria-label="Pelita Felicitas portfolio home"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
     >
       <defs>
         <linearGradient
-          id="moon-gradient"
-          x1="10"
-          y1="8"
-          x2="52"
-          y2="56"
-          gradientUnits="userSpaceOnUse"
+          id="moonGradient"
+          x1="0%"
+          y1="0%"
+          x2="100%"
+          y2="100%"
         >
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="45%" stopColor="#d8edff" />
-          <stop offset="100%" stopColor="#b9a7ff" />
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="50%" stopColor="#D6EEFF" />
+          <stop offset="100%" stopColor="#B8C9FF" />
         </linearGradient>
       </defs>
 
       <path
-        className="moon-logo-path"
+        className="moon-outline"
         d="
-          M45.5 47.5
-          C34 51.8 21.2 46 16.8 34.4
-          C12.4 22.8 18 9.8 29.6 5.5
-          C24.7 11.2 22.8 19 25.6 26.3
-          C29.5 36.5 40.3 42.4 50.7 39.9
-          C49.5 43 47.8 45.5 45.5 47.5
-          Z
+        M40.5 49
+        C28 52 16.8 44.3 14.2 31.8
+        C11.8 20.4 18.5 9.2 29.4 5.8
+        C24.5 11.4 22.8 19.5 25.8 27.3
+        C29.8 37.8 40.7 43.8 51 41
+        C48.8 44.6 45.2 47.5 40.5 49Z
         "
         fill="none"
-        stroke="url(#moon-gradient)"
+        stroke="url(#moonGradient)"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
 
-      <circle
-        className="moon-logo-star moon-logo-star-one"
-        cx="48"
-        cy="15"
-        r="1.8"
-      />
-
-      <circle
-        className="moon-logo-star moon-logo-star-two"
-        cx="55"
-        cy="26"
-        r="1.2"
-      />
+      <circle className="moon-star star1" cx="49" cy="15" r="1.8" />
+      <circle className="moon-star star2" cx="56" cy="25" r="1.2" />
 
       <path
-        className="moon-logo-sparkle"
-        d="M43 23 L44.2 26.2 L47.5 27.5 L44.2 28.8 L43 32 L41.8 28.8 L38.5 27.5 L41.8 26.2 Z"
+        className="moon-sparkle"
+        d="
+          M42 22
+          L43.2 25.2
+          L46.4 26.4
+          L43.2 27.6
+          L42 31
+          L40.8 27.6
+          L37.6 26.4
+          L40.8 25.2
+          Z
+        "
       />
     </svg>
   );
