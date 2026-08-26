@@ -1,6 +1,7 @@
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import NeonBackground from "../components/NeonBackground";
+import Projects from "../components/Projects";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <NeonBackground />
       <Navbar />
       <Hero />
+      <Projects />
     </main>
   );
 }

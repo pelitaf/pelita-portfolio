@@ -44,37 +44,17 @@ export default function NeonBackground() {
       <div className="neon-blob neon-blob-two" />
       <div className="neon-blob neon-blob-three" />
 
-      <div className="shape-wrapper shape-wrapper-one">
-        <div className="cute-shape heart heart-one">♡</div>
-      </div>
+      {/* Sparkles */}
+      <div className="cute-shape star star-one">✦</div>
+      <div className="cute-shape star star-two">✦</div>
+      <div className="cute-shape star star-three">✧</div>
+      <div className="cute-shape star star-four">✧</div>
+      <div className="cute-shape star star-five">✦</div>
 
-      <div className="shape-wrapper shape-wrapper-two">
-        <div className="cute-shape heart heart-two">♡</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-three">
-        <div className="cute-shape star star-one">☆</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-four">
-        <div className="cute-shape star star-two">✦</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-five">
-        <div className="cute-shape star star-three">✧</div>
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-six">
-        <div className="cute-shape circle circle-one" />
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-seven">
-        <div className="cute-shape circle circle-two" />
-      </div>
-
-      <div className="shape-wrapper shape-wrapper-eight">
-        <div className="cute-shape circle circle-three" />
-      </div>
+      {/* Neon circles */}
+      <div className="cute-shape circle circle-one" />
+      <div className="cute-shape circle circle-two" />
+      <div className="cute-shape circle circle-three" />
 
       <div className="mouse-glow" />
     </div>
