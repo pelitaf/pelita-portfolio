@@ -3,10 +3,9 @@
 import { useEffect, useState } from "react";
 
 const titles = [
-  "💾 Data Engineer / Analyst",
-  "💻 Web Developer",
-  "💡 Creative Thinker",
-  "🎨 Curious Creator",
+  "💾 Data Engineer",
+  "💻 Software Engineer",
+  "🎨 Creative Creator",
 ];
 
 export default function Hero() {
@@ -33,23 +32,12 @@ export default function Hero() {
 
         <div className="title-carousel" aria-live="polite">
           <div
-            className="title-carousel-track"
-            style={{
-              transform: `translateY(-${activeIndex * 100}%)`,
-            }}
+            key={activeIndex}
+            className="title-carousel-item"
           >
-            {titles.map((title) => (
-              <div className="title-carousel-item" key={title}>
-                {title}
-              </div>
-            ))}
+            {titles[activeIndex]}
           </div>
         </div>
-
-        {/* <p className="hero-description">
-          I create thoughtful digital experiences and work with data to turn
-          ideas into useful solutions.
-        </p> */}
 
         <div className="hero-actions">
           <a className="primary-button" href="#projects">
