@@ -11,8 +11,20 @@ export default function NeonBackground() {
 
       if (!element) return;
 
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      const offsetX = (event.clientX - centerX) / centerX;
+      const offsetY = (event.clientY - centerY) / centerY;
+
       element.style.setProperty("--mouse-x", `${event.clientX}px`);
       element.style.setProperty("--mouse-y", `${event.clientY}px`);
+
+      element.style.setProperty("--move-x", `${offsetX * 18}px`);
+      element.style.setProperty("--move-y", `${offsetY * 18}px`);
+
+      element.style.setProperty("--move-x-reverse", `${offsetX * -12}px`);
+      element.style.setProperty("--move-y-reverse", `${offsetY * -12}px`);
     }
 
     window.addEventListener("pointermove", handlePointerMove);
@@ -23,7 +35,11 @@ export default function NeonBackground() {
   }, []);
 
   return (
-    <div ref={backgroundRef} className="neon-background" aria-hidden="true">
+    <div
+      ref={backgroundRef}
+      className="neon-background"
+      aria-hidden="true"
+    >
       <div className="neon-blob neon-blob-one" />
       <div className="neon-blob neon-blob-two" />
       <div className="neon-blob neon-blob-three" />
