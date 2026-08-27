@@ -786,16 +786,12 @@ button {
   --mouse-x: 50vw;
   --mouse-y: 50vh;
 
-  --move-x: 0px;
-  --move-y: 0px;
-  --move-x-reverse: 0px;
-  --move-y-reverse: 0px;
-
   position: fixed;
 
   inset: 0;
 
   z-index: 0;
+
   overflow: hidden;
 
   pointer-events: none;
@@ -913,43 +909,11 @@ button {
 /* NEON SHAPES                      */
 /* -------------------------------- */
 
-/* -------------------------------- */
-/* PARALLAX NEON SHAPES             */
-/* -------------------------------- */
-
-.shape-wrapper {
+.cute-shape {
   position: absolute;
 
   z-index: 1;
-  pointer-events: none;
-  transition: transform 0.15s ease-out;
-  will-change: transform;
-}
 
-/* One group follows the cursor */
-.shape-wrapper-one,
-.shape-wrapper-three,
-.shape-wrapper-five,
-.shape-wrapper-seven {
-  transform: translate(
-    var(--move-x, 0),
-    var(--move-y, 0)
-  );
-}
-
-/* The other group moves in the opposite direction */
-.shape-wrapper-two,
-.shape-wrapper-four,
-.shape-wrapper-six,
-.shape-wrapper-eight {
-  transform: translate(
-    var(--move-x-reverse, 0),
-    var(--move-y-reverse, 0)
-  );
-}
-
-.cute-shape {
-  position: relative;
   pointer-events: none;
   user-select: none;
 
@@ -963,8 +927,6 @@ button {
 /* -------------------------------- */
 /* SPARKLES                         */
 /* -------------------------------- */
-
-/* Stars */
 
 .star {
   color: #f6dce6;
@@ -986,8 +948,8 @@ button {
 /* -------------------------------- */
 
 .circle {
-  width: 58px;
-  height: 58px;
+  width: 70px;
+  height: 70px;
 
   border:
     3px solid rgba(242, 184, 207, 0.65);
@@ -1002,7 +964,7 @@ button {
 }
 
 /* -------------------------------- */
-/* SHAPE PLACEMENT        .          */
+/* SHAPE PLACEMENT                  */
 /* -------------------------------- */
 
 .star-one {
@@ -1142,11 +1104,17 @@ button {
 
 @keyframes cute-float {
   from {
-    transform: translateY(0) rotate(-4deg) scale(1);
+    transform:
+      translateY(0)
+      rotate(-4deg)
+      scale(1);
   }
 
   to {
-    transform: translateY(-18px) rotate(6deg) scale(1.06);
+    transform:
+      translateY(-25px)
+      rotate(6deg)
+      scale(1.08);
   }
 }
 
@@ -1180,11 +1148,13 @@ button {
     justify-content: center;
 
     gap: 0.35rem;
+
     padding: 1rem 0.5rem;
   }
 
   .portfolio-nav a {
     padding: 0.45rem;
+
     font-size: 0.85rem;
   }
 
@@ -1192,8 +1162,8 @@ button {
     padding-top: 7rem;
   }
 
-  .hero-title {
-    font-size: clamp(3rem, 16vw, 5rem);
+  .hero-description {
+    font-size: 0.95rem;
   }
 
   .title-carousel {
@@ -1241,13 +1211,14 @@ button {
     border-width: 2px;
   }
 
-  .shape-wrapper-six {
-    top: 50%;
-    left: 1%;
+  .star-one {
+    top: 18%;
+    right: 5%;
   }
 
-  .heart {
-    font-size: 2.8rem;
+  .star-two {
+    bottom: 18%;
+    left: 7%;
   }
 
   .star-three {
