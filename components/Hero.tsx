@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import NeonBackground from "./NeonBackground";
+
 const titles = [
   "💾 Data Engineer",
   "💻 Software Engineer",
@@ -25,6 +27,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="hero-section">
+      <NeonBackground />
+
       <div className="hero-content">
         <p className="hero-eyebrow">Hello, I’m</p>
 
