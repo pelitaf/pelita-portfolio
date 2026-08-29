@@ -15,7 +15,7 @@ export default function AboutPage() {
             <p className="about-eyebrow">ABOUT ME</p>
 
             <h1 className="about-title">
-              Hi, I&apos;m <span>Pelita.</span> 👋
+              Hi, I&apos;m <span>Pelita.</span> 
             </h1>
 
             <p className="about-subtitle">
@@ -70,7 +70,7 @@ export default function AboutPage() {
               <div className="story-card__content">
                 <p className="story-card__label">WHERE IT STARTED</p>
 
-                <h3>MySpace, Tumblr &amp; HTML 💿</h3>
+                <h3>MySpace, Tumblr &amp; HTML</h3>
 
                 <p>
                   My first introduction to anything remotely related to coding
@@ -101,7 +101,7 @@ export default function AboutPage() {
               <div className="story-card__content">
                 <p className="story-card__label">PLOT TWIST</p>
 
-                <h3>I became a baker. 🧁</h3>
+                <h3>I became a baker.</h3>
 
                 <p>
                   When it came time to choose a career, tech wasn&apos;t my
@@ -136,7 +136,7 @@ export default function AboutPage() {
               <div className="story-card__content">
                 <p className="story-card__label">STARTING OVER</p>
 
-                <h3>Back to school at 25. 💻</h3>
+                <h3>Back to school at 25.</h3>
 
                 <p>
                   When I decided to go back to school, I kept thinking about
@@ -197,23 +197,27 @@ export default function AboutPage() {
         </section>
 
         <section className="about-hawaii">
-          <div className="about-hawaii__inner">
-            <p className="about-eyebrow"></p>
+            <div className="about-hawaii__inner">
+                <div className="about-hawaii__content">
+                <h2>
+                    Building a future in tech from Hawaiʻi.
+                </h2>
 
-            <h2>
-              Building a future in tech from Hawaiʻi.
-            </h2>
+                <p>
+                    I want to contribute meaningful work to the community that raised
+                    me and show that incredible tech talent can come from Hawaiʻi, too.
+                </p>
+                </div>
 
-            <p>
-              I want to contribute meaningful work to the community that raised
-              me and show that incredible tech talent can come from Hawaiʻi,
-              too.
-            </p>
-
-            <div className="about-hawaii__flower" aria-hidden="true">
-              🌺
+                <div className="about-hawaii__image" aria-hidden="true">
+                <Image
+                    src="/about/hawaii2.png"
+                    alt=""
+                    fill
+                    sizes="500px"
+                />
+                </div>
             </div>
-          </div>
         </section>
       </main>
     </>
