@@ -8,6 +8,9 @@ export type Project = {
   featured: boolean;
 
   cardImage?: string;
+  cardImagePosition?: string;
+  cardImageTransform?: string;
+
   detailImages?: string[];
 
   prototypeUrl?: string;
@@ -90,6 +93,9 @@ export const projects: Project[] = [
 
     cardImage:
       "/projects/ccc-dashboard/card.png",
+
+    cardImagePosition:
+      "20% center",
 
     detailImages: [
       "/projects/ccc-dashboard/detail-1.png",
@@ -178,6 +184,9 @@ export const projects: Project[] = [
 
     cardImage:
       "/projects/soundcloud-recreation/card.png",
+
+    cardImageTransform:
+    "scale(1.06) translateX(-2%)",
 
     detailImages: [
       "/projects/soundcloud-recreation/detail-1.png",

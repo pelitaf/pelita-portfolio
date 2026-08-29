@@ -1,173 +1,104 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
-import type { Project } from "../data/projects";
+import { projects } from "../data/projects";
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const [failedImages, setFailedImages] = useState<
-    Record<number, boolean>
-  >({});
-
-  useEffect(() => {
-    async function loadProjects() {
-      try {
-        const response = await fetch("/api/projects");
-
-        if (!response.ok) {
-          throw new Error("Failed to load projects.");
-        }
-
-        const data: Project[] = await response.json();
-
-        const featuredProjects = data
-          .filter((project) => project.featured)
-          .slice(0, 3);
-
-        setProjects(featuredProjects);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    loadProjects();
-  }, []);
-
-  function handleImageError(projectId: number) {
-    setFailedImages((current) => ({
-      ...current,
-      [projectId]: true,
-    }));
-  }
-
   return (
-    <section
-      id="projects"
-      className="projects-section"
-    >
+    <div className="projects-section">
       <div className="projects-container">
         <div className="section-heading">
           <p className="section-eyebrow">
-            My Work
+            PROJECTS
           </p>
 
           <h2 className="section-title">
-            Featured <span>Projects</span>
+            Things I&apos;ve <span>built.</span>
           </h2>
 
           <p className="section-description">
-            A selection of projects that combine data,
-            software engineering, problem-solving, and
-            thoughtful design.
+            A collection of projects spanning data, software development,
+            dashboards, and application design.
           </p>
         </div>
 
-        {loading ? (
-          <div className="projects-loading">
-            Loading projects...
-          </div>
-        ) : (
-          <div className="projects-grid">
-            {projects.map((project, index) => {
-              const hasValidImage =
-                project.cardImage &&
-                !failedImages[project.id];
+        <div className="projects-grid">
+          {projects.map((project, index) => (
+            <article
+              className="project-card"
+              key={project.slug}
+            >
+              <div className="project-card-top">
+                <span className="project-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
-              return (
-                <article
-                  className="project-card"
-                  key={project.id}
-                >
-                  <div className="project-card-top">
-                    <span className="project-number">
-                      {String(index + 1).padStart(
-                        2,
-                        "0"
-                      )}
-                    </span>
+                <span className="project-category">
+                  {project.category}
+                </span>
+              </div>
 
-                    <span className="project-category">
-                      {project.category}
-                    </span>
-                  </div>
+              <div className="project-preview">
+                <div className="project-preview-glow" />
 
-                  <div className="project-preview">
-                    <div className="project-preview-glow" />
-
-                    {hasValidImage ? (
-                      <img
-                        src={project.cardImage}
-                        alt={`${project.title} preview`}
-                        className="project-image"
-                        onError={() =>
-                          handleImageError(
-                            project.id
-                          )
-                        }
-                      />
-                    ) : (
-                      <div className="project-preview-content">
-                        <span>
-                          {project.title}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="project-content">
-                    <h3>
+                {project.cardImage ? (
+                  <Image
+                    src={project.cardImage}
+                    alt={`${project.title} preview`}
+                    fill
+                    className="project-image"
+                    style={{
+                      objectPosition:
+                        project.cardImagePosition ?? "center center",
+                      transform:
+                        project.cardImageTransform ?? "none",
+                    }}
+                    sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 50vw"
+                  />
+                ) : (
+                  <div className="project-preview-content">
+                    <span>
                       {project.title}
-                    </h3>
-
-                    <p>
-                      {project.description}
-                    </p>
-
-                    <div className="project-technologies">
-                      {project.technologies.map(
-                        (technology) => (
-                          <span key={technology}>
-                            {technology}
-                          </span>
-                        )
-                      )}
-                    </div>
+                    </span>
                   </div>
+                )}
+              </div>
 
-                  <div className="project-card-footer">
-                    <Link
-                      className="project-link"
-                      href={`/projects/${project.slug}`}
-                    >
-                      View Project
+              <div className="project-content">
+                <h3>
+                  {project.title}
+                </h3>
 
-                      <span aria-hidden="true">
-                        →
+                <p>
+                  {project.description}
+                </p>
+
+                <div className="project-technologies">
+                  {project.technologies.map(
+                    (technology) => (
+                      <span key={technology}>
+                        {technology}
                       </span>
-                    </Link>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
-        )}
+                    )
+                  )}
+                </div>
+              </div>
 
-        <div className="all-projects-container">
-          <Link href="/projects">
-            View All Projects
-
-            <span aria-hidden="true">
-              →
-            </span>
-          </Link>
+              <div className="project-card-footer">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="project-link"
+                >
+                  View Project
+                  <span aria-hidden="true">
+                    →
+                  </span>
+                </Link>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 }
