@@ -1,0 +1,1052 @@
+.about-page {
+  position: relative;
+  isolation: isolate;
+
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  color: var(--text-dark);
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.42) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(233, 245, 219, 0.5) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 52% 82%,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #dce8c9,
+      #c8d8ad 48%,
+      #b8ca9c
+    );
+}
+
+/* Soft cloudy highlights to match other pages */
+
+.about-page::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 8% 28%,
+      rgba(255, 255, 255, 0.38) 0%,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 24%,
+      rgba(233, 245, 219, 0.42) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 48% 70%,
+      rgba(255, 255, 255, 0.28) 0%,
+      transparent 34%
+    );
+
+  filter: blur(24px);
+
+  opacity: 0.9;
+}
+
+/* -------------------------------- */
+/* HERO                             */
+/* -------------------------------- */
+
+.about-hero {
+  position: relative;
+  z-index: 1;
+
+  width: min(1100px, calc(100% - 48px));
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding:
+    9rem 0
+    5rem;
+
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(320px, 440px);
+
+  gap: 4rem;
+
+  align-items: center;
+}
+
+.about-hero__content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 610px;
+}
+
+.about-eyebrow {
+  margin: 0 0 1rem;
+
+  color: var(--olive-dark);
+
+  font-size: 0.8rem;
+  font-weight: 700;
+
+  letter-spacing: 0.28rem;
+  text-transform: uppercase;
+}
+
+.about-title {
+  margin: 0;
+
+  color: var(--text-dark);
+
+  font-size:
+    clamp(
+      3.5rem,
+      8vw,
+      6.8rem
+    );
+
+  font-weight: 700;
+
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+}
+
+.about-title span {
+  color: var(--sage-medium);
+}
+
+.about-subtitle {
+  margin: 1.5rem 0 0;
+
+  color: var(--olive-dark);
+
+  font-size:
+    clamp(
+      1.25rem,
+      2.5vw,
+      1.65rem
+    );
+
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.about-intro {
+  max-width: 580px;
+
+  margin: 1.5rem 0 0;
+
+  color: var(--text-medium);
+
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.about-story-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  width: fit-content;
+
+  margin-top: 1.8rem;
+
+  color: var(--olive-dark);
+
+  text-decoration: none;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.about-story-link:hover {
+  color: var(--text-dark);
+
+  transform: translateY(-2px);
+}
+
+/* -------------------------------- */
+/* HERO IMAGE                       */
+/* -------------------------------- */
+
+.about-hero__image-wrap {
+  position: relative;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+.about-image-glow {
+  position: absolute;
+
+  inset:
+    12%
+    -8%
+    -8%
+    8%;
+
+  z-index: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+.about-hero__image {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 440px;
+  height: 540px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      113,
+      131,
+      85,
+      0.12
+    );
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  box-shadow:
+    0 12px 35px
+    rgba(
+      76,
+      88,
+      54,
+      0.08
+    );
+}
+
+.about-hero__image img {
+  object-fit: cover;
+
+  object-position:
+    center 58%;
+}
+
+/* -------------------------------- */
+/* RESPONSIVE HERO                  */
+/* -------------------------------- */
+
+@media (max-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr;
+
+    gap: 2.5rem;
+
+    min-height: auto;
+
+    padding-top: 8rem;
+  }
+
+  .about-hero__content {
+    max-width: 650px;
+  }
+
+  .about-hero__image-wrap {
+    justify-content: flex-start;
+  }
+
+  .about-hero__image {
+    width: min(520px, 100%);
+    max-width: none;
+    height: 560px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-hero {
+    width: calc(100% - 32px);
+
+    padding:
+      7rem 0
+      4rem;
+  }
+
+  .about-title {
+    font-size:
+      clamp(
+        3.2rem,
+        15vw,
+        5rem
+      );
+  }
+
+  .about-hero__image {
+    height: 470px;
+
+    border-radius: 18px;
+  }
+}
+
+/* -------------------------------- */
+/* STORY                            */
+/* -------------------------------- */
+
+.about-story {
+  position: relative;
+  z-index: 1;
+
+  width:
+    min(
+      1050px,
+      calc(100% - 48px)
+    );
+
+  margin: 0 auto;
+
+  padding:
+    7rem 0
+    8rem;
+}
+
+.about-section-heading {
+  max-width: 720px;
+
+  margin-bottom: 5rem;
+}
+
+.about-section-heading h2 {
+  margin: 0;
+
+  color:
+    var(--text-dark);
+
+  font-size:
+    clamp(
+      2.7rem,
+      6vw,
+      5rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+}
+
+.about-section-heading
+> p:last-child {
+  max-width: 600px;
+
+  margin:
+    1.3rem 0 0;
+
+  color:
+    var(--text-medium);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+/* -------------------------------- */
+/* TIMELINE                         */
+/* -------------------------------- */
+
+.story-timeline {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.story-timeline::before {
+  content: "";
+
+  position: absolute;
+
+  top: 2rem;
+  bottom: 2rem;
+  left: 52px;
+
+  width: 2px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(
+        113,
+        131,
+        85,
+        0.4
+      ) 8%,
+      rgba(
+        113,
+        131,
+        85,
+        0.4
+      ) 92%,
+      transparent
+    );
+}
+
+/* -------------------------------- */
+/* TIMELINE CARDS                   */
+/* -------------------------------- */
+
+.story-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    106px
+    minmax(0, 1fr);
+
+  gap: 2rem;
+
+  align-items: start;
+}
+
+.story-card__number {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  place-items: center;
+
+  width: 106px;
+  height: 106px;
+
+  border:
+    1px solid
+    rgba(
+      113,
+      131,
+      85,
+      0.25
+    );
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      247,
+      248,
+      239,
+      0.85
+    );
+
+  color:
+    var(--olive-dark);
+
+  box-shadow:
+    0 8px 24px
+    rgba(
+      76,
+      88,
+      54,
+      0.08
+    );
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+.story-card__content {
+  padding:
+    2.2rem
+    2.4rem;
+
+  border:
+    1px solid
+    rgba(
+      113,
+      131,
+      85,
+      0.12
+    );
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  box-shadow:
+    0 12px 35px
+    rgba(
+      76,
+      88,
+      54,
+      0.08
+    );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.story-card__content:hover {
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(
+      113,
+      131,
+      85,
+      0.28
+    );
+
+  box-shadow:
+    0 18px 45px
+    rgba(
+      76,
+      88,
+      54,
+      0.13
+    );
+}
+
+.story-card__label {
+  margin:
+    0 0 0.65rem;
+
+  color:
+    var(--olive-dark);
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16rem;
+
+  text-transform: uppercase;
+}
+
+.story-card__content h3 {
+  margin:
+    0 0 1.25rem;
+
+  color:
+    var(--text-dark);
+
+  font-size:
+    clamp(
+      1.5rem,
+      3vw,
+      2.1rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
+}
+
+.story-card__content p {
+  max-width: 800px;
+
+  margin:
+    0 0 1rem;
+
+  color:
+    var(--text-medium);
+
+  font-size: 0.95rem;
+
+  line-height: 1.75;
+}
+
+.story-card__content
+p:last-child {
+  margin-bottom: 0;
+}
+
+.story-card__content
+blockquote {
+  margin:
+    1.6rem 0;
+
+  padding:
+    0.15rem 0
+    0.15rem 1.25rem;
+
+  border-left:
+    3px solid
+    var(--sage-medium);
+
+  color:
+    var(--olive-dark);
+
+  font-size:
+    clamp(
+      1.1rem,
+      2vw,
+      1.4rem
+    );
+
+  font-style: italic;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+/* -------------------------------- */
+/* HAWAII SECTION                   */
+/* -------------------------------- */
+
+.about-hawaii {
+  position: relative;
+  z-index: 1;
+
+  width: min(
+    1050px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+
+  padding: 0 0 8rem;
+}
+
+.about-hawaii__inner {
+  position: relative;
+
+  min-height: 350px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 4rem;
+
+  border:
+    1px solid
+    rgba(113, 131, 85, 0.12);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.62);
+
+  box-shadow:
+    0 12px 35px
+    rgba(76, 88, 54, 0.08);
+}
+
+/* -------------------------------- */
+/* TEXT                             */
+/* -------------------------------- */
+
+.about-hawaii__content {
+  position: relative;
+  z-index: 2;
+
+  width: 62%;
+}
+
+.about-hawaii__content h2 {
+  margin: 0;
+
+  color: var(--text-dark);
+
+  font-size:
+    clamp(
+      2.5rem,
+      5vw,
+      4.5rem
+    );
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+.about-hawaii__content h2 span {
+  color: var(--sage-medium);
+}
+
+.about-hawaii__content > p:last-child {
+  max-width: 590px;
+
+  margin: 1.3rem 0 0;
+
+  color: var(--text-medium);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+}
+
+/* -------------------------------- */
+/* HAWAII BACKGROUND IMAGE          */
+/* -------------------------------- */
+
+.about-hawaii__image {
+  position: absolute;
+
+  z-index: 1;
+
+  right: 0;
+  bottom: 0;
+
+  width: 60%;
+  height: 100%;
+
+  pointer-events: none;
+
+  /*
+   * This is what creates the faded edge.
+   * The left side disappears into the card,
+   * while Diamond Head stays visible.
+   */
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 15%,
+      rgba(0, 0, 0, 0.65) 38%,
+      black 58%,
+      black 100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(0, 0, 0, 0.15) 15%,
+      rgba(0, 0, 0, 0.65) 38%,
+      black 58%,
+      black 100%
+    );
+}
+
+.about-hawaii__image img {
+  object-fit: cover;
+
+  /*
+   * Keeps the important part of your photo
+   * toward the bottom-right.
+   */
+  object-position: center bottom;
+
+  opacity: 0.6;
+
+  filter:
+    saturate(0.8)
+    contrast(0.9);
+}
+
+/*
+ * Soft cream/sage overlay so the photo
+ * blends into the rest of the portfolio.
+ */
+.about-hawaii__image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(247, 248, 239, 0.08),
+      rgba(233, 245, 219, 0.12)
+    );
+
+  pointer-events: none;
+}
+
+/* -------------------------------- */
+/* MOBILE                           */
+/* -------------------------------- */
+
+@media (max-width: 700px) {
+  .about-hawaii {
+    width: calc(100% - 32px);
+
+    padding-bottom: 5rem;
+  }
+
+  .about-hawaii__inner {
+    min-height: 550px;
+
+    align-items: flex-start;
+
+    padding:
+      2.5rem
+      1.5rem;
+
+    border-radius: 18px;
+  }
+
+  .about-hawaii__content {
+    width: 100%;
+  }
+
+  .about-hawaii__image {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 90%;
+    height: 52%;
+
+    -webkit-mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.35) 25%,
+        black 55%,
+        black 100%
+      );
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(0, 0, 0, 0.35) 25%,
+        black 55%,
+        black 100%
+      );
+  }
+
+  .about-hawaii__image img {
+    object-position: center bottom;
+
+    opacity: 0.7;
+  }
+}
+
+/* -------------------------------- */
+/* RESPONSIVE                       */
+/* -------------------------------- */
+
+@media (max-width: 700px) {
+  .about-hawaii {
+    width:
+      calc(100% - 32px);
+
+    padding-bottom: 5rem;
+  }
+
+  .about-hawaii__inner {
+    min-height: 400px;
+
+    padding:
+      2.5rem 1.5rem;
+
+    border-radius: 18px;
+  }
+
+  .about-hawaii__content {
+    width: 100%;
+  }
+
+  .about-hawaii__image {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 55%;
+
+    opacity: 0.12;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        black
+      );
+
+    -webkit-mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        black
+      );
+  }
+}
+
+/* -------------------------------- */
+/* RESPONSIVE                       */
+/* -------------------------------- */
+
+@media (max-width: 980px) {
+  .about-hero {
+    min-height: auto;
+
+    padding-top: 9rem;
+
+    grid-template-columns: 1fr;
+
+    gap: 3.5rem;
+  }
+
+  .about-hero__content {
+    max-width: 760px;
+  }
+
+  .about-hero__image-wrap {
+    justify-content:
+      flex-start;
+  }
+
+  .about-hero__image {
+    width:
+      min(
+        100%,
+        600px
+      );
+
+    aspect-ratio: 0.9;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-hero,
+  .about-story,
+  .about-hawaii {
+    width:
+      calc(100% - 32px);
+  }
+
+  .about-hero {
+    padding:
+      7rem 0
+      4rem;
+  }
+
+  .about-title {
+    font-size:
+      clamp(
+        3.2rem,
+        15vw,
+        5rem
+      );
+  }
+
+  .about-hero__image {
+    aspect-ratio: 0.8;
+
+    border-radius: 18px;
+  }
+
+  .about-story {
+    padding:
+      5rem 0
+      6rem;
+  }
+
+  .about-section-heading {
+    margin-bottom: 3.5rem;
+  }
+
+  .story-timeline {
+    gap: 1.5rem;
+  }
+
+  .story-timeline::before {
+    display: none;
+  }
+
+  .story-card {
+    grid-template-columns: 1fr;
+
+    gap: 0.8rem;
+  }
+
+  .story-card__number {
+    width: 58px;
+    height: 58px;
+
+    font-size: 0.65rem;
+  }
+
+  .story-card__content {
+    padding: 1.5rem;
+
+    border-radius: 18px;
+  }
+
+  .story-card__content h3 {
+    margin-bottom: 1rem;
+  }
+
+  .about-hawaii {
+    padding-bottom: 5rem;
+  }
+
+  .about-hawaii__inner {
+    padding:
+      2.5rem 1.5rem;
+
+    border-radius: 18px;
+  }
+
+  .about-hawaii__flower {
+    right: -0.5rem;
+  }
+}

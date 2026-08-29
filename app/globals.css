@@ -47,7 +47,28 @@ button {
   min-height: 100vh;
   overflow-x: hidden;
 
-  background: var(--background);
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.42) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(233, 245, 219, 0.5) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 52% 82%,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #dce8c9,
+      #c8d8ad 48%,
+      #b8ca9c
+    );
 }
 
 /* -------------------------------- */
@@ -356,23 +377,85 @@ button {
 }
 
 /* -------------------------------- */
+/* SHARED PAGE BACKGROUND           */
+/* -------------------------------- */
+
+.projects-section,
+.all-projects-page,
+.project-detail-page {
+  position: relative;
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.42) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(233, 245, 219, 0.5) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 52% 82%,
+      rgba(255, 255, 255, 0.35) 0%,
+      transparent 40%
+    ),
+    linear-gradient(
+      135deg,
+      #dce8c9,
+      #c8d8ad 48%,
+      #b8ca9c
+    );
+}
+
+/* Extra soft cloudy highlights without shapes */
+
+.projects-section::before,
+.all-projects-page::before,
+.project-detail-page::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 8% 28%,
+      rgba(255, 255, 255, 0.38) 0%,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 82% 24%,
+      rgba(233, 245, 219, 0.42) 0%,
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 48% 70%,
+      rgba(255, 255, 255, 0.28) 0%,
+      transparent 34%
+    );
+
+  filter: blur(24px);
+
+  opacity: 0.9;
+}
+
+/* -------------------------------- */
 /* PROJECTS                         */
 /* -------------------------------- */
 
 .projects-section {
-  position: relative;
   z-index: 2;
 
   padding:
     7rem 1.5rem
     8rem;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f5f7eb,
-      #eef3df
-    );
 
   border-top:
     1px solid
@@ -818,7 +901,6 @@ button {
 /* -------------------------------- */
 
 .all-projects-page {
-  position: relative;
   z-index: 2;
 
   min-height: 100vh;
@@ -826,16 +908,12 @@ button {
   padding:
     8rem 1.5rem
     8rem;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f5f7eb,
-      #eef3df
-    );
 }
 
 .all-projects-page-container {
+  position: relative;
+  z-index: 1;
+
   width:
     min(1200px, 100%);
 
@@ -891,7 +969,6 @@ button {
 /* -------------------------------- */
 
 .project-detail-page {
-  position: relative;
   z-index: 2;
 
   min-height: 100vh;
@@ -899,16 +976,12 @@ button {
   padding:
     9rem 1.5rem
     8rem;
-
-  background:
-    linear-gradient(
-      180deg,
-      #f5f7eb,
-      #eef3df
-    );
 }
 
 .project-detail-container {
+  position: relative;
+  z-index: 1;
+
   width:
     min(1050px, 100%);
 
@@ -1055,24 +1128,24 @@ button {
 }
 
 /* One image = full width */
+
 .project-detail-gallery-1 {
   grid-template-columns: 1fr;
 }
 
 /* Two images = side by side */
+
 .project-detail-gallery-2 {
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 }
 
-/* Three or more images:
-   first image is full width,
-   remaining images sit side by side */
-.project-detail-gallery-3
-.project-detail-image-container:first-child {
-  grid-column: 1 / -1;
-}
+/* Three or more:
+   first full width,
+   remaining images side by side */
 
+.project-detail-gallery-3
+.project-detail-image-container:first-child,
 .project-detail-gallery-4
 .project-detail-image-container:first-child,
 .project-detail-gallery-5
@@ -1082,7 +1155,6 @@ button {
   grid-column: 1 / -1;
 }
 
-/* Screenshot card */
 .project-detail-image-container {
   display: flex;
   align-items: center;
@@ -1107,7 +1179,6 @@ button {
     rgba(76, 88, 54, 0.08);
 }
 
-/* Show the entire screenshot */
 .project-detail-image {
   display: block;
 
@@ -1722,7 +1793,13 @@ li::marker {
     margin-bottom: 2.5rem;
   }
 
-  .project-detail-gallery {
+  .project-detail-gallery,
+  .project-detail-gallery-1,
+  .project-detail-gallery-2,
+  .project-detail-gallery-3,
+  .project-detail-gallery-4,
+  .project-detail-gallery-5,
+  .project-detail-gallery-6 {
     grid-template-columns:
       1fr;
 
@@ -1731,7 +1808,8 @@ li::marker {
       3rem;
   }
 
-  .project-detail-image-container:first-child {
+  .project-detail-gallery
+  .project-detail-image-container {
     grid-column: auto;
   }
 
