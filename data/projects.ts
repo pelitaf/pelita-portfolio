@@ -166,7 +166,7 @@ export const projects: Project[] = [
     title: "SoundCloud Website Recreation",
     category: "Web Development",
     description:
-      "This project is a front-end recreation of the SoundCloud homepage built to practice translating an existing website into a functional React application. I included screenshots of both the site I created and the actual SoundCloud website from the time I was working on the recreation so you can compare them side by side. Guess which one is which?",
+      "A front-end recreation of the SoundCloud homepage focused on replicating its layout, visual design, and core browsing experience.",
     technologies: [
       "Next.js",
       "React",
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     liveUrl: "",
 
     overview:
-      "This project is a front-end recreation of the SoundCloud homepage built to practice translating an existing website into a functional React application. The recreation includes SoundCloud-inspired navigation, promotional banners, search and upload controls, and a trending music section.",
+      "This project is a front-end recreation of the SoundCloud homepage built to practice translating an existing website into a functional React application. I included screenshots of both the site I created and the actual SoundCloud website from the time I was working on the recreation so you can compare them side by side. Can you guess which one is mine?",
 
     role:
       "I recreated the SoundCloud interface from the ground up, focusing on matching the original website's layout and styling while organizing the page into reusable React components.",
