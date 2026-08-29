@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <nav className="portfolio-nav" aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#resume">Resume</a>
-      <a href="#contact">Contact</a>
+      <Link href="/#home">Home</Link>
+      <Link href="/#about">About</Link>
+      <Link href="/projects">Projects</Link>
+      <Link href="/#resume">Resume</Link>
+      <Link href="/#contact">Contact</Link>
     </nav>
   );
 }

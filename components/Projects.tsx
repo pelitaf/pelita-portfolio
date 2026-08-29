@@ -1,93 +1,171 @@
-const projects = [
-  {
-    title: "Servco Smart Appraisal",
-    category: "Software Engineering",
-    description:
-      "A mobile-friendly vehicle appraisal experience designed to streamline condition assessments, estimate repair costs, and support smarter purchase decisions.",
-    technologies: ["Next.js", "React", "TypeScript", "AI"],
-    featured: true,
-  },
-  {
-    title: "CCC Dashboard",
-    category: "Data Analytics",
-    description:
-      "A dashboard designed to make operational data easier to understand, monitor, and use for everyday decision-making.",
-    technologies: ["Data Visualization", "Analytics", "Dashboard Design"],
-    featured: true,
-  },
-  {
-    title: "Data Engineering & QA",
-    category: "Data Engineering",
-    description:
-      "Data quality and validation work focused on improving reliability across large datasets, pipelines, and production tables.",
-    technologies: ["SQL", "Databricks", "Python", "Data Quality"],
-    featured: true,
-  },
-];
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+import type { Project } from "../data/projects";
 
 export default function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [failedImages, setFailedImages] = useState<
+    Record<number, boolean>
+  >({});
+
+  useEffect(() => {
+    async function loadProjects() {
+      try {
+        const response = await fetch("/api/projects");
+
+        if (!response.ok) {
+          throw new Error("Failed to load projects.");
+        }
+
+        const data: Project[] = await response.json();
+
+        const featuredProjects = data
+          .filter((project) => project.featured)
+          .slice(0, 3);
+
+        setProjects(featuredProjects);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProjects();
+  }, []);
+
+  function handleImageError(projectId: number) {
+    setFailedImages((current) => ({
+      ...current,
+      [projectId]: true,
+    }));
+  }
+
   return (
-    <section id="projects" className="projects-section">
+    <section
+      id="projects"
+      className="projects-section"
+    >
       <div className="projects-container">
         <div className="section-heading">
-          <p className="section-eyebrow">My Work</p>
+          <p className="section-eyebrow">
+            My Work
+          </p>
 
           <h2 className="section-title">
             Featured <span>Projects</span>
           </h2>
 
           <p className="section-description">
-            A selection of projects that combine data, software engineering,
-            problem-solving, and thoughtful design.
+            A selection of projects that combine data,
+            software engineering, problem-solving, and
+            thoughtful design.
           </p>
         </div>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <article className="project-card" key={project.title}>
-              <div className="project-card-top">
-                <span className="project-number">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+        {loading ? (
+          <div className="projects-loading">
+            Loading projects...
+          </div>
+        ) : (
+          <div className="projects-grid">
+            {projects.map((project, index) => {
+              const hasValidImage =
+                project.cardImage &&
+                !failedImages[project.id];
 
-                <span className="project-category">{project.category}</span>
-              </div>
+              return (
+                <article
+                  className="project-card"
+                  key={project.id}
+                >
+                  <div className="project-card-top">
+                    <span className="project-number">
+                      {String(index + 1).padStart(
+                        2,
+                        "0"
+                      )}
+                    </span>
 
-              <div className="project-preview">
-                <div className="project-preview-glow" />
+                    <span className="project-category">
+                      {project.category}
+                    </span>
+                  </div>
 
-                <div className="project-preview-content">
-                  <span>{project.title}</span>
-                </div>
-              </div>
+                  <div className="project-preview">
+                    <div className="project-preview-glow" />
 
-              <div className="project-content">
-                <h3>{project.title}</h3>
+                    {hasValidImage ? (
+                      <img
+                        src={project.cardImage}
+                        alt={`${project.title} preview`}
+                        className="project-image"
+                        onError={() =>
+                          handleImageError(
+                            project.id
+                          )
+                        }
+                      />
+                    ) : (
+                      <div className="project-preview-content">
+                        <span>
+                          {project.title}
+                        </span>
+                      </div>
+                    )}
+                  </div>
 
-                <p>{project.description}</p>
+                  <div className="project-content">
+                    <h3>
+                      {project.title}
+                    </h3>
 
-                <div className="project-technologies">
-                  {project.technologies.map((technology) => (
-                    <span key={technology}>{technology}</span>
-                  ))}
-                </div>
-              </div>
+                    <p>
+                      {project.description}
+                    </p>
 
-              <div className="project-card-footer">
-                <button className="project-link" type="button">
-                  View Project
-                  <span aria-hidden="true">→</span>
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
+                    <div className="project-technologies">
+                      {project.technologies.map(
+                        (technology) => (
+                          <span key={technology}>
+                            {technology}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="project-card-footer">
+                    <Link
+                      className="project-link"
+                      href={`/projects/${project.slug}`}
+                    >
+                      View Project
+
+                      <span aria-hidden="true">
+                        →
+                      </span>
+                    </Link>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        )}
 
         <div className="all-projects-container">
-          <a className="all-projects-button" href="/projects">
+          <Link href="/projects">
             View All Projects
-            <span aria-hidden="true">→</span>
-          </a>
+
+            <span aria-hidden="true">
+              →
+            </span>
+          </Link>
         </div>
       </div>
     </section>
