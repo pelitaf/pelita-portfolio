@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Navbar from "../../../components/Navbar";
+
 import { projects } from "../../../data/projects";
 
 type ProjectPageProps = {
@@ -23,6 +24,14 @@ export default async function ProjectPage({
     notFound();
   }
 
+  const hasExternalLinks =
+    project.prototypeUrl ||
+    project.repoUrl ||
+    project.liveUrl;
+
+  const detailImageCount =
+    project.detailImages?.length ?? 0;
+
   return (
     <main className="home-page">
       <Navbar />
@@ -34,6 +43,7 @@ export default async function ProjectPage({
             href="/projects"
           >
             <span aria-hidden="true">←</span>
+
             All Projects
           </Link>
 
@@ -51,23 +61,79 @@ export default async function ProjectPage({
             </p>
 
             <div className="project-technologies">
-              {project.technologies.map((technology) => (
-                <span key={technology}>
-                  {technology}
-                </span>
-              ))}
+              {project.technologies.map(
+                (technology) => (
+                  <span key={technology}>
+                    {technology}
+                  </span>
+                )
+              )}
             </div>
+
+            {hasExternalLinks && (
+              <div className="project-detail-actions">
+                {project.prototypeUrl && (
+                  <a
+                    className="project-action-button"
+                    href={project.prototypeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Prototype
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+
+                {project.liveUrl && (
+                  <a
+                    className="project-action-button"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Live Site
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+
+                {project.repoUrl && (
+                  <a
+                    className="project-action-button project-action-button-secondary"
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Repository
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
-          {project.image && (
-            <div className="project-detail-image-container">
-              <img
-                src={project.image}
-                alt={`${project.title} project preview`}
-                className="project-detail-image"
-              />
-            </div>
-          )}
+          {project.detailImages &&
+            detailImageCount > 0 && (
+              <div
+                className={`project-detail-gallery project-detail-gallery-${detailImageCount}`}
+              >
+                {project.detailImages.map(
+                  (image, index) => (
+                    <div
+                      className="project-detail-image-container"
+                      key={image}
+                    >
+                      <img
+                        src={image}
+                        alt={`${project.title} screenshot ${
+                          index + 1
+                        }`}
+                        className="project-detail-image"
+                      />
+                    </div>
+                  )
+                )}
+              </div>
+            )}
 
           <div className="project-detail-content">
             <section className="project-detail-section">
